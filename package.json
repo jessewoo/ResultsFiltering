@@ -1,0 +1,22 @@
+{
+  "name": "ResultsFiltering",
+  "version": "1.0.0",
+  "description": "Filtering Results with Different Libraries",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jessewoo/ResultsFiltering.git"
+  },
+  "author": "Jesse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessewoo/ResultsFiltering/issues"
+  },
+  "homepage": "https://github.com/jessewoo/ResultsFiltering",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
