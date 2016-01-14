@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  br
+  .well.well-sm.text-center
+    p: #[span Trying out] #[a(href="http://www.datatables.net/") datatable.net]
+
+  br
+  .row
+      .col-xs-12
+          .table-responsive
+              table#mainTable.table.table-bordered
+                  thead
+                      tr.center
+                          th Name
+                          th Gender
+                          th Mass
+                          th Height
+                      tbody
+
+
+
+block js-includes
+    script(src='/js/datatable.js')
