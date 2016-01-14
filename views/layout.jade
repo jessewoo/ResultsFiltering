@@ -1,7 +1,32 @@
+block all
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    block head
+      title= title
+      // css
+      block css
+      link(rel='stylesheet', href='/css/bootstrap-3.3.6.min.css')
+      link(rel='stylesheet', href='/css/tuning.css')
+      // Google fonts
+      link(rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto')
+      // favicon
+      link(rel='icon', type="image/x-icon", href="/favicon/favicon.ico")
+    block meta
+      meta(name="theme-color" content="#ffffff")
+      meta(charset='utf-8')
+      meta(http-equiv='X-UA-Compatible', content='IE=edge')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+      meta(name='description', content='Results Filtering')
+      meta(name='author', content='Jesse Woo - member of the RCSB PDB Team @ UCSD')
+
   body
     block content
+
+    block footer
+      footer
+        // Common javascript includes
+        script(src='/3rd-party-js/jquery-2.1.4.min.js')
+        script(src='/3rd-party-js/bootstrap-3.3.6.min.js')
+        // Other javascript files
+        block js-includes
