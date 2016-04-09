@@ -1,5 +1,10 @@
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
+var monk    = require('monk');
+var db      = monk('localhost:27017/starwars');
+
+
+
 var mdb = require('mongodb');
 
 // Config options
