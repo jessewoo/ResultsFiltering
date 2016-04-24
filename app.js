@@ -41,7 +41,6 @@ var upload = require('./routes/upload');
 
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/upload', upload);
 app.use('/datatable', datatable);
 
