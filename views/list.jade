@@ -1,0 +1,78 @@
+extends ../layout-news
+
+block nav
+	div.pull-right#actionNews
+		input.btn.btn-primary.btn-sm(type='button', onclick='location.href="/news/new"', value='Create News')
+		.btn.btn-danger.btn-sm.toggle-delete(value='all' data-toggle="button" aria-pressed="false" autocomplete="off") Enable Delete
+		div.btn-group(role="group")
+			a.btn.btn-default.btn-sm#toggle-ALL-News(href='/news/') All News
+			a.btn.btn-default.btn-sm#toggle-PDB101-News(href='/news/source/pdb101') pdb101 Only
+			a.btn.btn-default.btn-sm#toggle-RCSB-News(href='/news/source/rcsb') rcsb Only
+			a.btn.btn-default.btn-sm#toggle-WWPDB-News(href='/news/source/wwpdb') wwpdb Only
+
+block content
+	br
+	div.pull-right
+		- if ((typeof(source) !== 'undefined') && ((source) !== 'All')) {
+			input.btn.btn-default.btn-sm#display15(type='button', onclick='location.href="/news/source/#{source}"', value='Display Latest 15 #{source}')
+			input.btn.btn-default.btn-sm#displayAll(type='button', onclick='location.href="/news/all/#{source}"', value='Display All #{source} News')
+		-}
+		- if ((typeof(source) !== 'undefined') && ((source) == 'All')) {
+			input.btn.btn-default.btn-sm#display15(type='button', onclick='location.href="/news/"', value='Display Latest 15')
+			input.btn.btn-default.btn-sm#displayAll(type='button', onclick='location.href="/news/all"', value='Display All News')
+		-}
+
+	h1
+		span#NewsSource #{source}
+		|  #{title}
+
+	if (msg)
+		if (msg.indexOf('error') === 0)
+			div#msg.alert.alert-danger= msg
+		else
+			div#msg.alert.alert-success= msg
+	else
+		div#msg
+	hr
+	if (items.length > 0)
+		table.table.table-hover.table-bordered.table-condensed#tablenews
+			thead
+				tr.active
+					th rcsb
+					th pdb101
+					th wwpdb
+					th Title
+					th Release Date (Unix)
+					th Release Date
+					th Action
+			tbody
+				each item, i in items
+					- var _id = item._id;
+					tr
+						td
+							if item.channel_rcsb
+								span.glyphicon.glyphicon-ok(aria-hidden="true")
+						td
+							if item.channel_pdb101
+								span.glyphicon.glyphicon-ok(aria-hidden="true")
+						td
+							if item.channel_wwpdb
+								span.glyphicon.glyphicon-ok(aria-hidden="true")
+						td
+							a(href='/news/edit/' + _id)= item.title
+						td= item.release_time_unix
+						td= item.release_date
+						td
+							a(href='/news/edit/' + _id)
+								span.btn.btn-default.btn-xs
+									span.glyphicon.glyphicon-pencil
+							= " "
+							button.btn.btn-danger.btn-xs.hide.delete-news(value=_id, type="button")
+								span.glyphicon.glyphicon-trash
+
+	br
+	br
+
+block js-includes
+	script(src='/3rd-party-js/datatable-1.10.11.js')
+	script(src='/js/news/table.js')
