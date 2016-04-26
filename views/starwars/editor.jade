@@ -1,0 +1,54 @@
+extends ../layout
+
+block nav
+    div.pull-right#actionNews
+        input.btn.btn-primary.btn-sm(type='submit', value='Submit' form='editorForm')
+        a.btn.btn-default.btn-sm(href="/starwars") Cancel
+
+block content
+    form#editorForm.form-horizontal(action='/starwars/create', method='post')
+        input#mongoid(type='hidden', name='mongoid')
+
+        //- general panel ----------------------------------------------------------
+        div.panel.panel-info
+            div.panel-heading
+                h4 Editor
+            div.panel-body
+                div.row
+                    div.col-xs-10
+                        div.form-group
+                            label.col-xs-4.control-label Character Name
+                            div.col-xs-8
+                                input.form-control#characterName(type='text', name='name', required)
+
+    br
+    br
+
+    div.panel.panel-warning
+        div.panel-heading
+            button#addImage.pull-right.btn.btn-warning.btn-xs Add Image
+            h4 Upload Images
+        div.panel-body
+            div.row#AddImageForm
+                div.col-xs-3
+                    h5 Profile Image
+                    form(role='form' action="/upload")#profile_filename.dropzone.file_upload.required_file
+                        .dz-preview
+                            .dz-message Drag a homepage image here to upload
+
+
+
+
+
+block js-includes
+    script(src='/3rd-party-js/dropzone.js')
+    script(src='/js/upload/dropzone-config.js')
+    script(src='/3rd-party-js/jquery-ui-1.11.4.js')
+
+    script(src='/3rd-party-js/bootstrap-select-1.10.0.js')
+    script(src='/3rd-party-js/moments-2.9.0.js')
+    script(src='/3rd-party-js/bootstrap-datetime-4.15.35.js')
+    script(src='/3rd-party-js/parsley-2.3.7.min.js')
+
+    script(src='/js/starwars/form.js')
+    script(src='/js/starwars/common.js')

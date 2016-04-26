@@ -36,13 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 var routes = require('./routes/index');
-var datatable = require('./routes/starwars');
+var starwars = require('./routes/starwars');
 var upload = require('./routes/upload');
 
 
 app.use('/', routes);
 app.use('/upload', upload);
-app.use('/datatable', datatable);
+app.use('/starwars', starwars);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

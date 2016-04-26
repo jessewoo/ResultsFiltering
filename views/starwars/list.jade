@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  br
+  h4 Table of Star Wars Character
+  br
+  .row
+      .col-xs-12
+          table#mainCharacterTable.table.table-bordered
+              thead
+                  tr.center
+                      th Name
+                      th Gender
+                      th Mass
+                      th Height
+                  tbody
+
+
+// Fires off an AJAX call to the REST URL to populate the table list
+block js-includes
+    script(src='/js/starwars/table.js')
+    script(src='/js/starwars/common.js')
