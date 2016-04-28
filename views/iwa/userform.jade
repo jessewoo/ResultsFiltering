@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    form#editorForm.form-horizontal(action='/starwars/create', method='post')
+
+        //- general panel ----------------------------------------------------------
+        div.panel.panel-info
+            div.panel-heading
+                h4 Editor
+            div.panel-body
+                div.row
+                    div.col-xs-10
+                        div.form-group
+                            label.col-xs-4.control-label Character Name
+                            div.col-xs-8
+                                input.form-control#characterName(type='text', name='name', required)
+
+
+
+
+
+
+block js-includes
+    script(src='/js/iwa/form.js')

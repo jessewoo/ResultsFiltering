@@ -38,11 +38,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 var routes = require('./routes/index');
 var starwars = require('./routes/starwars');
 var upload = require('./routes/upload');
+var iwa = require('./routes/iwa');
+
 
 
 app.use('/', routes);
 app.use('/upload', upload);
 app.use('/starwars', starwars);
+app.use('/iwa', iwa);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

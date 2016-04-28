@@ -45,7 +45,7 @@ function normalizePort(val) {
 // TODO: Add in SSL options
 
 // Port is 3000
-console.log("Dev port: https://localhost:3000");
+console.log("Dev port: http://localhost:3000");
 
 // Event listener for HTTP server "error" event.
 function onError(error) {
