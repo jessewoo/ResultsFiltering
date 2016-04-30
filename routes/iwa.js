@@ -8,7 +8,7 @@ var database = require('../classes/database-iwa.js');
 // RENDERS of iwa/
 // Provide the list of all the characters in Star Wars
 router.get('/', function(req, res, next) {
-  res.render('iwa/userform', { title: 'Interview Wizard Application (IWA)' });
+  res.render('iwa/index', { title: 'Interview Wizard Application (IWA)' });
 });
 
 // Load FORM a Star Wars character that can be edited
