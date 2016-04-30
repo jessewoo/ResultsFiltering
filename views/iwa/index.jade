@@ -1,13 +1,19 @@
 extends ../layout-iwa
 
 block content
-    br
-    br
+
     //- general panel ----------------------------------------------------------
-    div.container
-        h4 IWA Widget Container
-        div#WidgetContainer
-        button.btn.btn-primary#StartForm Start Form
+    .well-sm.well.text-center#instructionIWA this is where the IWA widget will be placed
+    div#WidgetContainer.container
+
+    nav.hide#questionsPagination.text-center
+        ul.pagination
+            li#firstname-question
+                a(href="#firstname-question") 1: First Name
+            li#homeaddress-question
+                a(href="#homeaddress-question") 2: Home Address
+            li#city-question
+                a(href="#city-question") 3: City of Residence
 
 block js-includes
     script(src='/js/iwa/form.js')
