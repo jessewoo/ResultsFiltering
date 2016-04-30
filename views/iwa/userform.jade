@@ -1,24 +1,25 @@
-extends ../layout
+extends ../layout-iwa
 
 block content
-    form#editorForm.form-horizontal(action='/starwars/create', method='post')
-
-        //- general panel ----------------------------------------------------------
-        div.panel.panel-info
-            div.panel-heading
-                h4 Editor
-            div.panel-body
-                div.row
-                    div.col-xs-10
+    br
+    br
+    //- general panel ----------------------------------------------------------
+    div.panel.panel-primary
+        div.panel-heading
+            h4 Turbotax Widget
+        div.panel-body
+            div.row
+                div.col-xs-12
+                    form#editorForm(action='/iwa/create', method='post')
                         div.form-group
-                            label.col-xs-4.control-label Character Name
-                            div.col-xs-8
-                                input.form-control#characterName(type='text', name='name', required)
-
-
-
-
-
+                            label Your First Name and initial
+                            input.form-control#FirstName(type='text', name='firstname', required)
+                        div.form-group
+                            label Home address (number and street). If you have a P.O. box, see instructions.
+                            input.form-control#HomeAddress(type='text', name='homeaddress', required)
+                        div.form-group
+                            label City, town or post office, state, and ZIP code. If you have a foreign address, also complete spaces below (see instructions).
+                            input.form-control#City(type='text', name='city', required)
 
 block js-includes
     script(src='/js/iwa/form.js')
