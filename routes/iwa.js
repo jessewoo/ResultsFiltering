@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 // Load FORM a Star Wars character that can be edited
 router.get('/edit/:id', function (req, res) {
     console.log("Editing ->", req.params.id);
-    res.render('starwars/editor', {postTitle: 'Edit - ' + req.params.id + ' Star Wars Character'});
+    res.render('iwa/editor', {postTitle: 'Edit - ' + req.params.id + ' IWA Customer'});
 });
 
 
@@ -23,7 +23,7 @@ router.get('/edit/:id', function (req, res) {
 // REST url's
 
 // Returns the entire content of a collection - Currently the only collection is:
-// (1) Characters = ":collection"
+// (1) users = ":collection"
 router.get('/all/:collection', function (req, res) {
   returnAll(req.params.collection, res);
 });

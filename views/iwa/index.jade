@@ -4,7 +4,10 @@ block content
 
     //- general panel ----------------------------------------------------------
     .well-sm.well.text-center#instructionIWA this is where the IWA widget will be placed
-    div#WidgetContainer.container
+    //input(type='hidden', name='_id', value=item._id)
+
+    div#WidgetContainer
+        form(role='form')
 
     nav.hide#questionsPagination.text-center
         ul.pagination

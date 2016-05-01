@@ -2,12 +2,13 @@
  * Created by jessewoo on 4/27/16.
  */
 
+// LISTENER
 $("#StartForm").click(function() {
     console.log("Start Form Button Clicked");
     $("#instructionIWA").hide();
     $("#StartForm").hide();
 
-    $("#WidgetContainer").load("iwa-files/firstname.html", function() {
+    $("#WidgetContainer form").load("/iwa-files/firstname.html", function() {
         // console.log("Firstname Form");
         $("#questionsPagination").removeClass("hide");
         $("#questionsPagination").removeClass("hide");
@@ -15,20 +16,21 @@ $("#StartForm").click(function() {
     });
 })
 
+// LISTENER - when user clicks on pagination wizard
 $("#questionsPagination ul li").on("click", function() {
     // console.log("clicked: " + $(this).attr('id'));
     var question_id = $(this).attr("id");
     var trimmed_id = question_id.replace("-question","");
     // console.log(trimmed_id);
 
-    $("#WidgetContainer .form-group").addClass("hide");
+    $("#WidgetContainer form .form-group").addClass("hide");
 
     // Pagination
     var selectedquestion_id = "#" + trimmed_id + "-question";
     $("#questionsPagination ul li").removeClass("active");
     $(selectedquestion_id).addClass("active");
 
-    var loadhtmlfile = "iwa-files/" + trimmed_id + ".html";
+    var loadhtmlfile = "/iwa-files/" + trimmed_id + ".html";
 
     // Do not AJAX load panels that have ALREADY been AJAX loaded
     // This code checks to see if a section has previously been loaded or not
@@ -47,9 +49,17 @@ $("#questionsPagination ul li").on("click", function() {
             },
             success: function (data) {
                 // console.log('SUCCESS');
-                $("#WidgetContainer").append(data);
+                $("#WidgetContainer form").append(data);
             }
         });
     }
 
 })
+
+
+// LISTENER - when user enters in input, check if three fields are filled
+$("#WidgetContainer form .form-group input").on('input', function() {
+    console.log($(this).val());
+});
+
+// http://stackoverflow.com/questions/931252/ajax-autosave-functionality
