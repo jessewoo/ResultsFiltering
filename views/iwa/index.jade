@@ -2,9 +2,9 @@ extends ../layout-iwa
 
 block content
 
+    h4= postTitle
     //- general panel ----------------------------------------------------------
     .well-sm.well.text-center#instructionIWA this is where the IWA widget will be placed
-    //input(type='hidden', name='_id', value=item._id)
 
     div#WidgetContainer
         form(role='form')
@@ -17,6 +17,8 @@ block content
                 a(href="#homeaddress-question") 2: Home Address
             li#city-question
                 a(href="#city-question") 3: City of Residence
+
+    div#ErrorMessageContainer
 
 block js-includes
     script(src='/js/iwa/form.js')

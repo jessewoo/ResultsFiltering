@@ -11,10 +11,14 @@ router.get('/', function(req, res, next) {
   res.render('iwa/index', { title: 'Interview Wizard Application (IWA)' });
 });
 
-// Load FORM a Star Wars character that can be edited
 router.get('/edit/:id', function (req, res) {
     console.log("Editing ->", req.params.id);
-    res.render('iwa/editor', {postTitle: 'Edit - ' + req.params.id + ' IWA Customer'});
+    res.render('iwa/index', {postTitle: 'Editing Form of ' + req.params.id + ' IWA Customer'});
+});
+
+router.get('/summary/:id', function (req, res) {
+    console.log("Summary ->", req.params.id);
+    res.render('iwa/summary', {postTitle: 'Summary of ' + req.params.id + ' IWA Customer'});
 });
 
 
@@ -29,14 +33,13 @@ router.get('/all/:collection', function (req, res) {
 });
 
 // Return one document from ANY collection where the MongoDB ID matches
-router.get('/one/mongo/:collection/:id', function (req, res) {
+router.get('/one/:collection/:id', function (req, res) {
     returnOne(req.params.id, req.params.collection, res);
 });
 
-
 // Insert (add) mongodb object
 router.post('/save/:collection', function (req, res) {
-    // Extract & log
+    // Extract & logs
     var body = req.body;
     console.log("CRUD - Received SAVE request to [" + req.params.collection + "] : " + JSON.stringify(body));
     // Perform the database load (add) operation on the created object

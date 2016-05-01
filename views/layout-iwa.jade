@@ -8,8 +8,6 @@ html
       block css
       link(rel='stylesheet', href='/css/bootstrap-3.3.6.min.css')
       link(rel='stylesheet', href='/css/tuning-iwa.css')
-      // Google fonts
-      link(rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Roboto')
     block meta
       meta(name="theme-color" content="#ffffff")
       meta(charset='utf-8')
@@ -21,7 +19,7 @@ html
   body
     .navbar.navbar-default.navbar-fixed-top.navbar(role='navigation')
         .container
-            button.pull-right.btn.btn-primary.btn-sm#StartForm Create New
+            button.pull-right.btn.btn-default.btn-sm#StartForm Create New
             button.pull-right.btn.btn-primary.btn-sm.hide#SubmitForm Submit
             .navbar-header
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -32,8 +30,6 @@ html
                 a.navbar-brand(href='/iwa') IWA.com
 
         block nav
-        //#nav-page-title
-        //    block page-title
 
     .container
         block content

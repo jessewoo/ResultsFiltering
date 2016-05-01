@@ -1,8 +1,15 @@
-#StartForm {
+#StartForm,
+#SubmitForm{
     margin-top: 10px;
 }
 
 #instructionIWA,
-#WidgetContainer form {
+#WidgetContainer form,
+#SummaryContainer {
     margin-top: 70px;
+}
+
+#SummaryContainer p {
+    font-style: italic;
+    margin-left: 10px;
 }
