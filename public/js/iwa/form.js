@@ -132,7 +132,7 @@ $(document).ready(function() {
     if (pathArray[pathArray.length - 1].length == 24) {
         object_id = pathArray[pathArray.length - 1];
     }
-    
+
     // If we are editing something that already exists, populate with prior data from mongodb
     if (object_id) {
         console.log("Loading previous MotM content from ID -> ", object_id);
