@@ -1,9 +1,12 @@
 extends ../layout-email
 
 block content
+    h5 Gmail App
 
-	hr
-	h5 To Dos
-	ul#tasks
-		li Jesse Woo
-		li Gmail App
+    // Angular directives
+    div(ng-controller='TestCtrl')
+        h1 {title2}
+        input(type='text' ng-model='title2')
+
+block js-includes
+    script(src='/js/emailapp/common.js')
