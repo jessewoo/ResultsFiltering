@@ -37,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 var routes = require('./routes/index');
 var starwars = require('./routes/starwars');
+var emailapp = require('./routes/emailapp');
 var upload = require('./routes/upload');
 var iwa = require('./routes/iwa');
 
@@ -46,6 +47,8 @@ app.use('/', routes);
 app.use('/upload', upload);
 app.use('/starwars', starwars);
 app.use('/iwa', iwa);
+app.use('/emailapp', emailapp);
+
 
 
 // catch 404 and forward to error handler
