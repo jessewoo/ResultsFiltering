@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 var routes = require('./routes/index');
 var starwars = require('./routes/starwars');
+var brianford = require('./routes/brianford');
 var emailapp = require('./routes/emailapp');
 var upload = require('./routes/upload');
 var iwa = require('./routes/iwa');
@@ -48,6 +49,7 @@ var iwa = require('./routes/iwa');
 app.use('/', routes);
 app.use('/upload', upload);
 app.use('/starwars', starwars);
+app.use('/brianford', brianford);
 app.use('/iwa', iwa);
 app.use('/emailapp', emailapp);
 
