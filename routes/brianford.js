@@ -1,86 +1,32 @@
 var express = require('express');
-var router = express.Router();
-
-// Mongo Database related
-var database = require('../classes/database-iwa.js');
-
-
-// RENDERS of Tutorial from Brian Ford
-// http://briantford.com/blog/angular-express
-
-router.get('/', function(req, res, next) {
-  res.render('brianford/index', { title: 'Tutorial from Brian Ford' });
-});
+var router = express.Router(),
+    routes = require('./routes'),
+    api = require('./routes/api');
 
 
-
-
-// ============================================================
-// REST url's
-
-// Returns the entire content of a collection - Currently the only collection is:
-// (1) users = ":collection"
-router.get('/all/:collection', function (req, res) {
-  returnAll(req.params.collection, res);
-});
-
-// Return one document from ANY collection where the MongoDB ID matches
-router.get('/one/:collection/:id', function (req, res) {
-    returnOne(req.params.id, req.params.collection, res);
-});
-
-// Insert (add) mongodb object
-router.post('/save/:collection', function (req, res) {
-    // Extract & logs
-    var body = req.body;
-    console.log("CRUD - Received SAVE request to [" + req.params.collection + "] : " + JSON.stringify(body));
-    // Perform the database load (add) operation on the created object
-    returnCreate(body, req.params.collection, res);
-});
-
-// Delete (remove) mongodb object
-router.delete('/del/:collection', function (req, res) {
-    // Extract & log
-    var body = req.body;
-    console.log("CRUD - Received DELETE request from [" + req.params.collection + "] ID: " + JSON.stringify(body));
-    //console.log("CRUD - Received DELETE request from [" + req.params.collection + "] ID: " + body);
-
-    // Perform removal from database
-    database.remove(body, req.params.collection, function (toSend) {
-        res.send(toSend);
-    });
-});
-
-module.exports = router;
-
-// ===================================================================
-// Helper function with async callback - for read
-var returnAll = function (collection, res) {
-  database.get(collection, function (toSend) {
-    res.send(toSend);
-  });
+exports.index = function(req, res){
+    res.render('brianford/index');
 };
 
-// Helper function with async callback - for read single document
-var returnOne = function (mongo_id, collection, res) {
-    database.one(mongo_id, collection, function (toSend) {
-        res.send(toSend);
-    });
+exports.partials = function (req, res) {
+    var name = req.params.name;
+    res.render('brianford/partials/' + name);
 };
 
 
-// Helper function with async callback - for create
-var returnCreate = function (toLoad, collection, res) {
-    database.load(toLoad, collection, function (toSend) {
-        res.send(toSend);
-    });
-};
+// Routes
 
-// Helper function with async callback - for update
-var returnUpdate = function (toLoad, res) {
-    database.update(toLoad, function (toSend) {
-        res.send(toSend);
-    });
-};
+router.get('/', routes.index);
+router.get('/partials/:name', routes.partials);
 
+// JSON API
 
+router.get('/api/posts', api.posts);
+
+router.get('/api/post/:id', api.post);
+router.post('/api/post', api.addPost);
+router.put('/api/post/:id', api.editPost);
+router.delete('/api/post/:id', api.deletePost);
+
+// redirect all others to the index (HTML5 history)
+router.get('*', routes.index);
