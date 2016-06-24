@@ -1,32 +1,23 @@
 var express = require('express');
-var router = express.Router(),
-    routes = require('./routes'),
-    api = require('./routes/api');
+var router = express.Router();
+
+// Mongo Database related
+var database = require('../classes/database-iwa.js');
 
 
-exports.index = function(req, res){
-    res.render('brianford/index');
-};
+// RENDERS of Tutorial from Brian Ford
+// http://briantford.com/blog/angular-express
 
-exports.partials = function (req, res) {
-    var name = req.params.name;
-    res.render('brianford/partials/' + name);
-};
+router.get('/', function(req, res, next) {
+    res.render('brianford/index', { title: 'Tutorial' });
+});
 
 
-// Routes
+// ============================================================
+// REST url's
 
-router.get('/', routes.index);
-router.get('/partials/:name', routes.partials);
+module.exports = router;
 
-// JSON API
 
-router.get('/api/posts', api.posts);
-
-router.get('/api/post/:id', api.post);
-router.post('/api/post', api.addPost);
-router.put('/api/post/:id', api.editPost);
-router.delete('/api/post/:id', api.deletePost);
-
-// redirect all others to the index (HTML5 history)
-router.get('*', routes.index);
+// ===================================================================
+// Helper function with async callback - for read
